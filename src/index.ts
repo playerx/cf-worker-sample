@@ -32,7 +32,7 @@ export default {
     ctx: ExecutionContext
   ): Promise<void> {
     console.log("entered");
-    console.log(`Hello World!`, controller.cron, controller.scheduledTime, env);
+    console.log(`Hello CI/CD!`, controller.cron, controller.scheduledTime, env);
     console.log("ctx", ctx);
   },
 };
