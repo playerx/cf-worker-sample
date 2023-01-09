@@ -4,12 +4,8 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:
-    inputs:
-      environment:
-        description: "Choose an environment to deploy to: <staging|production>"
-        required: true
-        default: "staging"
 
 jobs:
   deploy:
@@ -21,4 +17,3 @@ jobs:
         uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          command: publish --env ${{ github.event.inputs.environment || 'production' }}
