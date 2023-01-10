@@ -2,9 +2,6 @@ name = "cf-scheduler"
 main = "src/index.ts"
 compatibility_date = "2023-01-05"
 
-[triggers]
-crons = ["*/10 * * * *"]
-
 [vars]
 API_KEY= "the secret mongo key goes here"
 
