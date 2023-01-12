@@ -13,6 +13,14 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v2
+
+      - name: Download from S3
+        run: |
+          aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS }} wrangler.toml
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
