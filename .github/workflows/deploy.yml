@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Download from S3
+      - name: Download wrangler.toml
         run: |
           aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS }} wrangler.toml
         env:
@@ -29,3 +29,6 @@ jobs:
           command: publish > /dev/null
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+
+      - name: Cleanup
+        run: rm wrangler.toml
