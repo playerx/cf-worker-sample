@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: echo "${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || ('s3://repo-configs/' + github.event.repository.name + '/wrangler.toml') }}"
+      - run: echo "${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || format('s3://repo-configs/{0}/wrangler.toml', github.event.repository.name) }}"
 
       - name: Download wrangler.toml
         run: |
