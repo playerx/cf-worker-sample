@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: echo "${{ github.event.repository.name }}"
+      - run: echo "${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || ("s3://repo-configs/" + github.event.repository.name + "/wrangler.toml") }}"
 
       - name: Download wrangler.toml
         run: |
-          aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS }} wrangler.toml
+          aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || ("s3://repo-configs/" + github.event.repository.name + "/wrangler.toml") }} wrangler.toml
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
