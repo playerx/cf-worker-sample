@@ -1,7 +1,7 @@
 name = "cf-scheduler"
 main = "src/index.ts"
 compatibility_date = "2023-01-05"
-route = "hello.jok.fm"
+route = { pattern = "hello.jok.fm", zone_id = "f77ae2586cba0c4d34f21957478465d8"  }
 
 [vars]
 API_KEY= "the secret mongo key goes here"
