@@ -32,5 +32,5 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
-      - name: Cleanup
-        run: rm wrangler.toml
+      # - name: Cleanup
+      #   run: rm wrangler.toml
