@@ -14,15 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: echo "${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || format('s3://repo-configs/{0}/wrangler.toml', github.event.repository.name) }}"
+      # - run: echo "${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || format('s3://repo-configs/{0}/wrangler.toml', github.event.repository.name) }}"
 
-      - name: Download wrangler.toml
-        run: |
-          aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || format('s3://repo-configs/{0}/wrangler.toml', github.event.repository.name) }} wrangler.toml
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION:
+      # - name: Download wrangler.toml
+      #   run: |
+      #     aws s3 cp --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com  ${{ secrets.S3_WRANGLER_CONFIG_ADDRESS || format('s3://repo-configs/{0}/wrangler.toml', github.event.repository.name) }} wrangler.toml
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+      #     AWS_DEFAULT_REGION:
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0

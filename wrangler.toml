@@ -1,0 +1,13 @@
+name = "cf-scheduler"
+main = "src/index.ts"
+compatibility_date = "2023-01-05"
+route = "hello.jok.fm"
+
+[vars]
+API_KEY= "the secret mongo key goes here"
+
+[env.staging.vars]
+API_KEY= "STAGING secret mongo key goes here"
+
+[env.production.vars]
+API_KEY= "PRODUCTION secret mongo key goes here"
