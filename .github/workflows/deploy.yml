@@ -31,6 +31,7 @@ jobs:
           command: publish
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_ZONE_ID: f77ae2586cba0c4d34f21957478465d8
 
       # - name: Cleanup
       #   run: rm wrangler.toml
